@@ -1,0 +1,4 @@
+" WARNING
+" If using VIM (not NeoVim), copy this file your home dir as `.vimrc` (or `_vimrc` if in Windows).
+execute "source " . fnamemodify(expand("$HOME") . "/.vim/.vimrc", ":p")
+
