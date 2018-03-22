@@ -1,5 +1,39 @@
 set nocompatible              " be iMproved, required
 if has('nvim') " NEOVIM - Use VimPlug
+  if has('win32') || has('win64')
+    let g:python3_host_prog='C:/Python36/python.exe'
+    let g:python_host_prog='C:/Python27/python.exe'
+    let g:ruby_host_prog = 'ruby C:/Ruby24/lib/ruby/gems/2.4.0/gems/neovim-0.7.1/bin/neovim-ruby-host'
+  endif
+
+  call plug#begin('$Home/.vim/vundle')
+  " list of plugins
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'mhartington/oceanic-next' "Color Scheme
+  Plug 'vim-airline/vim-airline'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'scrooloose/nerdtree'
+  Plug 'tpope/vim-fugitive'
+  Plug 'shougo/denite.nvim'
+  Plug 'chemzqm/denite-extra'
+  Plug 'herringtondarkholme/yats.vim'
+  Plug 'othree/html5.vim'
+  Plug 'fszymanski/deoplete-emoji'
+  Plug 'OmniSharp/omnisharp-vim', { 'do': 'cd server && powershell -executionpolicy bypass -File build.ps1' }
+  " Installs vim-dispatch (required to launch OmniSharp server)
+  Plug 'tpope/vim-dispatch'
+  " Installs this source
+  Plug 'https://gitlab.com/mixedCase/deoplete-omnisharp.git'
+  Plug 'scrooloose/syntastic'
+  Plug 'sirver/ultisnips'
+  Plug 'quramy/tsuquyomi'
+  Plug 'shougo/vimproc.vim'
+  Plug 'mhartington/nvim-typescript'
+  Plug 'tomasiser/vim-code-dark'
+  call plug#end()
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 
 else " VIM - Use Vundle
   filetype off                  " required
