@@ -8,7 +8,11 @@ set relativenumber
 set number
 
 set background=dark
-color codedark
+if has("nvim")
+  color OceanicNext
+else
+  color codedark
+endif
 
 " Set extra options when running in GUI mode
 if has("gui_running") || has("nvim")
@@ -21,7 +25,7 @@ if has("gui_running") || has("nvim")
   set cmdheight=5
   set cursorline
   if has("nvim")
-    echom 'has nvim'
+    let g:airline_theme='oceanicnext'
     "Sets the font for nvim-qt
     Guifont! DejaVuSansMonoForPowerline NF:h11
     " Sets the font for some gtk clients
@@ -29,7 +33,7 @@ if has("gui_running") || has("nvim")
       call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
     endif
   else
-    echom 'does not has nvim'
+    let g:airline_theme='codedark'
   endif
 else
   set termencoding=utf8
@@ -53,9 +57,6 @@ set foldlevelstart=99 " Start unfolded
 if !has("nvim") && (has("win32") || has("win64"))
   set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
-
-colorscheme codedark
-let g:airline_theme='codedark'
 
 if exists('g:GtkGuiLoaded')
   call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')

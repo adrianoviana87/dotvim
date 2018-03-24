@@ -11,7 +11,7 @@ nnoremap <leader>cf<cr> :set guifont=*<cr>
 
 " Change Color
 if has("nvim")
-  nnoremap <leader>cc<cr> :Denite colorscheme<cr> 
+  nnoremap <leader>cc<cr> :Denite colorscheme -no-quit -winheight=6<cr> 
 else
   nnoremap <leader>cc<cr> :color 
 endif
