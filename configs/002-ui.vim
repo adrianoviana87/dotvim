@@ -11,7 +11,7 @@ set background=dark
 color codedark
 
 " Set extra options when running in GUI mode
-if has("gui_running")
+if has("gui_running") || has("nvim")
   set guioptions-=TrLm
   set guitablabel=\[%N\]\ %t\ %M
 
@@ -21,12 +21,15 @@ if has("gui_running")
   set cmdheight=5
   set cursorline
   if has("nvim")
+    echom 'has nvim'
     "Sets the font for nvim-qt
     Guifont! DejaVuSansMonoForPowerline NF:h11
     " Sets the font for some gtk clients
     if exists('g:GtkGuiLoaded')
-      call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')
+      call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
     endif
+  else
+    echom 'does not has nvim'
   endif
 else
   set termencoding=utf8
