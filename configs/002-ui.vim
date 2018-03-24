@@ -14,24 +14,8 @@ if has("gui_running")
     set guioptions-=TrLm
     set guitablabel=\[%N\]\ %t\ %M
 
-    "set guifont=NotoMono\ NF:h10
-    "set guifont=CodeNewRoman\ NF:h11
-    "set guifont=Monoid\ NF:h10
-
-    " set guifont=FantasqueSansMono\ NF:h12
-    " set guifont=DejaVuSansMonoForPowerline\ NF:h9
-    set guifont=Consolas\ NF:h10
-    "color monokai-phoenix
-    "color StaleDark
-    "color reloaded "Matrix like
-    "color sexy-railscasts
-    "color refactor "Very cool
-    "color nerv-ous "Liked it
-    "color flatcolor
-    "color distinguished "Liked it
-    "color gardener " see if it is good
-    " color landscape "good last used
-    "color molokai_dark
+    set guifont=DejaVuSansMonoForPowerline\ NF:h10
+    
     " Height of the command bar
     set cmdheight=5
     set cursorline
@@ -42,15 +26,15 @@ if !has("gui_running")
   set t_ut=
 endif
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+"   GUI OPTIONS   "
+"""""""""""""""""""
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
+:set guioptions+=!  "execute external comands in the terminal
+:set guioptions-=e  "no tab pages
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" toggle fullscreen mode by pressing F11
-noremap <f11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<cr>
-" toggle window transparency to 247 or 180 by pressing F12
-noremap <f12> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "247,180")<cr>
-
-
+if has("win32") || has("win64")
+  set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+endif

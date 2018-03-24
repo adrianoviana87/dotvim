@@ -1,5 +1,12 @@
 filetype plugin indent on    " required
 
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+""""""""""""""""""
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -8,8 +15,6 @@ set autoread
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-" Fast saving
-nmap <leader>w :w!<cr>
 set path+=**
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -22,7 +27,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore+=*/.git/*,*/node_modules/*,*/dll/*,*/dist/*,*/tmp/*,*.swp
 set wildmode=full
 
 set wildchar=<Tab>
@@ -63,8 +68,37 @@ set mat=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
+set belloff=all
 set t_vb=
 set tm=500
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
 

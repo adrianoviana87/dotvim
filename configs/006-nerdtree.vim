@@ -6,7 +6,7 @@
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-let g:NERDTreeWinPos = 'right'
+let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize=62
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=1
