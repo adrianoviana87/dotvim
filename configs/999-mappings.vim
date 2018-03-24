@@ -32,9 +32,10 @@ nnoremap <leader>f /
 nnoremap <c-c> :
 
 " No Highlight
-nnoremap <leader>nh :nh<cr>
+nnoremap <leader>nh :noh<cr>
 
 inoremap <s-cr> <esc>
+inoremap <kj> <esc>
 
 " toggle fullscreen mode by pressing F11
 noremap <f11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<cr>
@@ -105,4 +106,12 @@ nnoremap <leader>ot :terminal<cr>
 
 " Projectionist - Switch between relative files
 nnoremap <leader>oa :A<cr>
+
+
+" Yank all file
+nnoremap <leader>ya ggyG
+
+
+" Indent All
+nnoremap <leader>ia gg=G
 
