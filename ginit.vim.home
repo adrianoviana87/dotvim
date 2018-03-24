@@ -1,15 +1,4 @@
 " When using NeoVim copy this file to `~\ginit.vim` (in Windows `%LOCALAPPDATA%/nvim/ginit.vim`)
+execute "source " . fnamemodify(expand("$HOME") . "/.vim/configs/002-ui.vim", ":p")
 
-Guifont! Consolas NF:h11
-colorscheme codedark
-let g:airline_theme='codedark'
-
-if exists('g:GtkGuiLoaded')
-  call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')
-endif
-
-set guioptions-=TrLm
-set guitablabel=\[%N\]\ %t\ %M
-set cmdheight=5
-set cursorline
 

@@ -1,11 +1,20 @@
 " Fast saving
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
+nnoremap <leader>wa :wa<cr>
+
+" Quit
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>wqa :wqa<cr>
 
 " Change Font
 nnoremap <leader>cf<cr> :set guifont=*<cr>
 
 " Change Color
-nnoremap <leader>cc<cr> :color 
+if has("nvim")
+  nnoremap <leader>cc<cr> :Denite colorscheme<cr> 
+else
+  nnoremap <leader>cc<cr> :color 
+endif
 
 " puts the last command in the command line
 nnoremap <s-cr> :<up>
@@ -84,6 +93,9 @@ nnoremap <c-right> <c-w><
 nnoremap <leader><up> :let &cmdheight=&cmdheight+1<cr>
 nnoremap <leader><down> :let &cmdheight=&cmdheight-1<cr>
 
+" Close the quickfix window
+nnoremap <leader>cq :cc<cr>
+
 nnoremap <leader>cl :set cursorline<cr>
 nnoremap <leader>ncl :set nocursorline<cr>
 nnoremap <leader>cc :set cursorcolumn<cr>
@@ -91,5 +103,6 @@ nnoremap <leader>ncc :set nocursorcolumn<cr>
 
 nnoremap <leader>ot :terminal<cr>
 
-
+" Projectionist - Switch between relative files
+nnoremap <leader>oa :A<cr>
 

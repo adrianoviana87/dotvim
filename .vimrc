@@ -6,7 +6,7 @@ if has('nvim') " NEOVIM - Use VimPlug
     let g:ruby_host_prog = 'ruby C:/Ruby24/lib/ruby/gems/2.4.0/gems/neovim-0.7.1/bin/neovim-ruby-host'
   endif
 
-  call plug#begin('$Home/.vim/vundle')
+  call plug#begin('$Home/.vim/plugged')
   " list of plugins
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'mhartington/oceanic-next' "Color Scheme
@@ -24,12 +24,15 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'tpope/vim-dispatch'
   " Installs this source
   Plug 'https://gitlab.com/mixedCase/deoplete-omnisharp.git'
+  Plug 'yggdroot/indentline'
+  Plug 'tpope/vim-projectionist'
   Plug 'scrooloose/syntastic'
   Plug 'sirver/ultisnips'
   Plug 'quramy/tsuquyomi'
   Plug 'shougo/vimproc.vim'
   Plug 'mhartington/nvim-typescript'
   Plug 'tomasiser/vim-code-dark'
+  Plug 'Shougo/neomru.vim'
   call plug#end()
   if (has("termguicolors"))
     set termguicolors
@@ -76,13 +79,18 @@ else " VIM - Use Vundle
   Plugin 'dbext.vim'
   Plugin 'chriskempson/base16-vim'
   Plugin 'tomasiser/vim-code-dark'
+  Plugin 'yggdroot/indentline'
+  Plugin 'tpope/vim-projectionist'
   call vundle#end()            " required
 endif
 
 let configBasePath = fnamemodify(expand("$HOME") . '/.vim/configs', ":p") . '/'
 
 execute "source " . configBasePath . "001-core.vim"
-execute "source " . configBasePath . "002-ui.vim"
+" Only executes this file when in VIM. NeoVim will execute it when the gui initilizes
+if !has("nvim")
+  execute "source " . configBasePath . "002-ui.vim"
+endif
 execute "source " . configBasePath . "003-utils.vim"
 execute "source " . configBasePath . "004-status-line.vim"
 execute "source " . configBasePath . "005-autocomplete.vim"
@@ -92,5 +100,7 @@ execute "source " . configBasePath . "008-typescript.vim"
 execute "source " . configBasePath . "009-csharp.vim"
 execute "source " . configBasePath . "010-dev-icons.vim"
 execute "source " . configBasePath . "011-database.vim"
+execute "source " . configBasePath . "012-projectionist.vim"
 execute "source " . configBasePath . "998-auto-commands.vim"
 execute "source " . configBasePath . "999-mappings.vim"
+

@@ -9,22 +9,34 @@ set number
 
 set background=dark
 color codedark
+
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=TrLm
-    set guitablabel=\[%N\]\ %t\ %M
+  set guioptions-=TrLm
+  set guitablabel=\[%N\]\ %t\ %M
 
-    set guifont=DejaVuSansMonoForPowerline\ NF:h10
-    
-    " Height of the command bar
-    set cmdheight=5
-    set cursorline
-endif
-if !has("gui_running")
+  set guifont=DejaVuSansMonoForPowerline\ NF:h11
+
+  " Height of the command bar
+  set cmdheight=5
+  set cursorline
+  if has("nvim")
+    "Sets the font for nvim-qt
+    Guifont! DejaVuSansMonoForPowerline NF:h11
+    " Sets the font for some gtk clients
+    if exists('g:GtkGuiLoaded')
+      call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')
+    endif
+  endif
+else
   set termencoding=utf8
   set t_Co=256
   set t_ut=
 endif
+
+set fillchars=vert:┃,fold:—
+set foldmethod=indent
+set foldlevelstart=99 " Start unfolded
 
 "   GUI OPTIONS   "
 """""""""""""""""""
@@ -35,6 +47,19 @@ endif
 :set guioptions+=!  "execute external comands in the terminal
 :set guioptions-=e  "no tab pages
 
-if has("win32") || has("win64")
+if !has("nvim") && (has("win32") || has("win64"))
   set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
+
+colorscheme codedark
+let g:airline_theme='codedark'
+
+if exists('g:GtkGuiLoaded')
+  call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')
+endif
+
+set guioptions-=TrLm
+set guitablabel=\[%N\]\ %t\ %M
+set cmdheight=5
+set cursorline
+
