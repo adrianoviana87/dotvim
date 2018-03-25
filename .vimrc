@@ -87,10 +87,7 @@ endif
 let configBasePath = fnamemodify(expand("$HOME") . '/.vim/configs', ":p") . '/'
 
 execute "source " . configBasePath . "001-core.vim"
-" Only executes this file when in VIM. NeoVim will execute it when the gui initilizes
-if !has("nvim")
-  execute "source " . configBasePath . "002-ui.vim"
-endif
+execute "source " . configBasePath . "002-ui.vim"
 execute "source " . configBasePath . "003-utils.vim"
 execute "source " . configBasePath . "004-status-line.vim"
 execute "source " . configBasePath . "005-autocomplete.vim"
@@ -101,6 +98,10 @@ execute "source " . configBasePath . "009-csharp.vim"
 execute "source " . configBasePath . "010-dev-icons.vim"
 execute "source " . configBasePath . "011-database.vim"
 execute "source " . configBasePath . "012-projectionist.vim"
+" Only executes this file when in VIM. NeoVim will execute it when the gui initilizes
+if !has("nvim")
+  execute "source " . configBasePath . "997-gui.vim"
+endif
 execute "source " . configBasePath . "998-auto-commands.vim"
 execute "source " . configBasePath . "999-mappings.vim"
 

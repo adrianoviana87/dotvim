@@ -11,13 +11,15 @@ nnoremap <leader>cf<cr> :set guifont=*<cr>
 
 " Change Color
 if has("nvim")
-  nnoremap <leader>cc<cr> :Denite colorscheme -no-quit -winheight=6<cr> 
+  nnoremap <leader>cc<cr> :Denite colorscheme -no-quit -winheight=6<cr>
 else
-  nnoremap <leader>cc<cr> :color 
+  nnoremap <leader>cc<cr> :color
 endif
 
 " puts the last command in the command line
 nnoremap <s-cr> :<up>
+
+nnoremap ; :
 
 " go to previous next error
 nnoremap <down> :cnext<cr>
@@ -35,7 +37,8 @@ nnoremap <c-c> :
 nnoremap <leader>nh :noh<cr>
 
 inoremap <s-cr> <esc>
-inoremap <kj> <esc>
+inoremap kj <c-o>l<esc>
+
 
 " toggle fullscreen mode by pressing F11
 noremap <f11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<cr>
@@ -111,7 +114,6 @@ nnoremap <leader>oa :A<cr>
 " Yank all file
 nnoremap <leader>ya ggyG
 
-
-" Indent All
-nnoremap <leader>ia gg=G
+" Format the file
+nnoremap <leader>kd  :call Adr_FormatCode()<cr>
 

@@ -28,3 +28,29 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction 
+
+function! Adr_FormatCode()
+  " Saves the last search and cursor position
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " Do the business
+  %s/\s\+$//e
+  execute 'normal gg=G'
+  " Restore previous search history and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+

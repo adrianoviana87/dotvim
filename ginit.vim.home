@@ -1,4 +1,4 @@
 " When using NeoVim copy this file to `~\ginit.vim` (in Windows `%LOCALAPPDATA%/nvim/ginit.vim`)
-execute "source " . fnamemodify(expand("$HOME") . "/.vim/configs/002-ui.vim", ":p")
+execute "source " . fnamemodify(expand("$HOME") . "/.vim/configs/997-gui.vim", ":p")
 
 
