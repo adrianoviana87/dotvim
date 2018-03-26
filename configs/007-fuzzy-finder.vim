@@ -1,7 +1,29 @@
 if has("nvim")
+	call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-j>',
+	      \ '<denite:move_to_next_line>',
+	      \ 'noremap'
+	      \)
+	call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-k>',
+	      \ '<denite:move_to_previous_line>',
+	      \ 'noremap'
+	      \)
+
+  let ignore=&wildignore .
+        \ ',*.dll,*.pdb,.git,.hg,.svn,node_modules,*.lock,*.js.map,*.obj'
+  call denite#custom#var('file_rec', 'command',
+        \ ['scantree.py', '--ignore', ignore])
+
   nnoremap <c-p> :Denite file_rec<cr>
   nnoremap <leader>b :Denite buffer<cr>
   nnoremap <leader>m :Denite file_mru<cr>
+  nnoremap <leader>gs:Denite gitstatus<cr>
+  nnoremap <leader>gl:Denite gitlog<cr>
+  nnoremap <leader>gc:Denite gitchanged<cr>
+
 else
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'

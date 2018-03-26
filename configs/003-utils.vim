@@ -53,4 +53,16 @@ function! Adr_FormatCode()
   let @/=_s
   call cursor(l, c)
 endfunction
+function! Adr_TrailingWhitespaces()
+  " Saves the last search and cursor position
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " Do the business
+  %s/\s\+$//e
+  " Restore previous search history and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 

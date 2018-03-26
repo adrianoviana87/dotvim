@@ -1,3 +1,5 @@
+scriptencoding utf-8
+set encoding=utf8
 set nocompatible              " be iMproved, required
 if has('nvim') " NEOVIM - Use VimPlug
   if has('win32') || has('win64')
@@ -33,6 +35,9 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'mhartington/nvim-typescript'
   Plug 'tomasiser/vim-code-dark'
   Plug 'Shougo/neomru.vim'
+  Plug 'oranget/vim-csharp'
+  Plug 'neoclide/denite-git'
+  Plug 'rafi/awesome-vim-colorschemes'
   call plug#end()
   if (has("termguicolors"))
     set termguicolors

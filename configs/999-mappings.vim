@@ -27,6 +27,12 @@ nnoremap <down> :cnext<cr>
 " go to previous error
 nnoremap <up> :cprev<cr>
 
+" go to first error
+nnoremap <left> :cfirst<cr>
+
+" go to last error
+nnoremap <right> :clast<cr>
+
 " go to Search mode
 nnoremap <leader>f /
 
@@ -37,7 +43,7 @@ nnoremap <c-c> :
 nnoremap <leader>nh :noh<cr>
 
 inoremap <s-cr> <esc>
-inoremap kj <c-o>l<esc>
+inoremap jk <esc>
 
 
 " toggle fullscreen mode by pressing F11
@@ -98,7 +104,7 @@ nnoremap <leader><up> :let &cmdheight=&cmdheight+1<cr>
 nnoremap <leader><down> :let &cmdheight=&cmdheight-1<cr>
 
 " Close the quickfix window
-nnoremap <leader>cq :cc<cr>
+nnoremap <leader>qc :cclose<cr>
 
 nnoremap <leader>cl :set cursorline<cr>
 nnoremap <leader>ncl :set nocursorline<cr>
@@ -117,3 +123,11 @@ nnoremap <leader>ya ggyG
 " Format the file
 nnoremap <leader>kd  :call Adr_FormatCode()<cr>
 
+" Fix trailing whitespaces
+nnoremap <leader>tws :call Adr_TrailingWhitespaces()<cr>
+
+" Inserts a new line below the cursor and continues in normal mode
+nnoremap <leader>o o<esc>
+
+" Inserts a new line above the cursor and continues in normal mode
+nnoremap <leader>O O<esc>
