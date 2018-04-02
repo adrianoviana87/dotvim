@@ -40,22 +40,22 @@ augroup omnisharp_commands
 
     "The following commands are contextual, based on the current cursor position.
 
-    autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-    autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-    autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
-    autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-    autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>fi :OmniSharpFindImplementations<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>ft :OmniSharpFindType<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>fs :OmniSharpFindSymbol<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>fu :OmniSharpFindUsages<cr>
     "finds members in the current buffer
-    autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>fm :OmniSharpFindMembers<cr>
     " cursor can be anywhere on the line containing an issue
-    autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
-    autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-    autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-    autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>x  :OmniSharpFixIssue<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>tt :OmniSharpTypeLookup<cr>
+    autocmd FileType cs nnoremap <buffer> <leader>dc :OmniSharpDocumentation<cr>
     "navigate up by method/property/field
-    autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr>
+    autocmd FileType cs nnoremap <buffer> <C-K> :OmniSharpNavigateUp<cr>
     "navigate down by method/property/field
-    autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
+    autocmd FileType cs nnoremap <buffer> <C-J> :OmniSharpNavigateDown<cr>
     autocmd FileType cs setlocal shiftwidth=4
     autocmd FileType cs setlocal tabstop=4
 

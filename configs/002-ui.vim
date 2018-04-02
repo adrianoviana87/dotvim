@@ -23,4 +23,17 @@ augroup locallistchars_group
     autocmd!
     autocmd FileType cs,vim,typescript,sql,js,c,cpp,h,bat setlocal list listchars=eol:↵,tab:↦.,trail:∷,extends:❯,precedes:❮
 augroup END
+color codedark
+set guioptions-=TrLm
+set guitablabel=\[%N\]\ %t\ %M
+
+set guifont=DejaVuSansMonoForPowerline\ NF:h11
+let g:airline_theme='codedark'
+
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
+:set guioptions+=!  "execute external comands in the terminal
+:set guioptions-=e  "no tab pages
 

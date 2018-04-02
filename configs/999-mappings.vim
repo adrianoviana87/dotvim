@@ -131,3 +131,7 @@ nnoremap <leader>o o<esc>
 
 " Inserts a new line above the cursor and continues in normal mode
 nnoremap <leader>O O<esc>
+
+nnoremap 0 ^
+
+nnoremap <leader>´s :NERDTreeFind<cr>

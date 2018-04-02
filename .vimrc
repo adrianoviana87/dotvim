@@ -38,6 +38,7 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'oranget/vim-csharp'
   Plug 'neoclide/denite-git'
   Plug 'rafi/awesome-vim-colorschemes'
+  Plug 'mattn/emmet-vim'
   call plug#end()
   if (has("termguicolors"))
     set termguicolors

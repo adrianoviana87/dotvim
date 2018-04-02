@@ -26,13 +26,13 @@ augroup typescript_commands
       autocmd CursorHold *.typescript : <C-u>echo tsuquyomi#hint()<CR>
     endif
 
-    autocmd FileType typescript nnoremap gd :TsuDefinition<cr>
-    autocmd FileType typescript nnoremap <leader>fi :TsuImplementation<cr>
-    autocmd FileType typescript nnoremap <leader>fu :TsuReferences<cr>
-    autocmd FileType typescript nnoremap <leader>x  :TsuQuickFix<cr>
-    autocmd FileType typescript nnoremap <leader>fx :TsuImport<cr>
-    autocmd FileType typescript nnoremap <leader>dc :TsuSignatureHelp<cr>
-    autocmd FileType typescript nnoremap <F2> :TsuRenameSymbol<cr>
+    autocmd FileType typescript nnoremap <buffer> gd :TsuDefinition<cr>
+    autocmd FileType typescript nnoremap <buffer> <leader>fi :TsuImplementation<cr>
+    autocmd FileType typescript nnoremap <buffer> <leader>fu :TsuReferences<cr>
+    autocmd FileType typescript nnoremap <buffer> <leader>x  :TsuQuickFix<cr>
+    autocmd FileType typescript nnoremap <buffer> <leader>fx :TsuImport<cr>
+    autocmd FileType typescript nnoremap <buffer> <leader>dc :TsuSignatureHelp<cr>
+    autocmd FileType typescript nnoremap <buffer> <F2> :TsuRenameSymbol<cr>
 augroup END
 
 

@@ -1,29 +1,18 @@
-if !has("nvim") && !has("gui_running")
-  exit
-endif
+color codedark
+set guioptions-=TrLm
+set guitablabel=\[%N\]\ %t\ %M
+
+set guifont=DejaVuSansMonoForPowerline\ NF:h11
+let g:airline_theme='codedark'
 
 if has("nvim")
-  color OceanicNext
-else
-  color codedark
-endif
-
-  set guioptions-=TrLm
-  set guitablabel=\[%N\]\ %t\ %M
-
-  set guifont=DejaVuSansMonoForPowerline\ NF:h11
-
-  if has("nvim")
-    let g:airline_theme='oceanicnext'
-    "Sets the font for nvim-qt
-    Guifont! DejaVuSansMonoForPowerline NF:h11
-    " Sets the font for some gtk clients
-    if exists('g:GtkGuiLoaded')
-      call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
-    endif
-  else
-    let g:airline_theme='codedark'
+  "Sets the font for nvim-qt
+  Guifont! DejaVuSansMonoForPowerline NF:h11
+  " Sets the font for some gtk clients
+  if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
   endif
+endif
 
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
