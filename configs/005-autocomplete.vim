@@ -5,7 +5,7 @@
 " => autocomplete (not plugin)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("nvim")
-  let g:deoplete#enable_at_startup=0
+  let g:deoplete#enable_at_startup=1
 endif
 
 let g:typescript_opfirst='\%([<>=,?^%|*/&]\|\([-:+]\)\1\@!\|!=\|in\%(stanceof\)\=\>\)'

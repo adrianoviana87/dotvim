@@ -39,6 +39,7 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'neoclide/denite-git'
   Plug 'rafi/awesome-vim-colorschemes'
   Plug 'mattn/emmet-vim'
+  Plug 'skywind3000/asyncrun.vim'
   call plug#end()
   if (has("termguicolors"))
     set termguicolors
@@ -87,6 +88,9 @@ else " VIM - Use Vundle
   Plugin 'tomasiser/vim-code-dark'
   Plugin 'yggdroot/indentline'
   Plugin 'tpope/vim-projectionist'
+  Plugin 'matze/vim-move'
+  Plugin 'skywind3000/asyncrun.vim'
+  Plugin 'ajh17/vimcompletesme'
   call vundle#end()            " required
 endif
 

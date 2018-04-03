@@ -36,4 +36,6 @@ let g:airline_theme='codedark'
 :set guioptions-=L  "remove left-hand scroll bar
 :set guioptions+=!  "execute external comands in the terminal
 :set guioptions-=e  "no tab pages
-
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

@@ -135,3 +135,6 @@ nnoremap <leader>O O<esc>
 nnoremap 0 ^
 
 nnoremap <leader>´s :NERDTreeFind<cr>
+
+nnoremap <leader>b :AsyncRun dotnet build /m /v:q<cr>
+
