@@ -136,5 +136,12 @@ nnoremap 0 ^
 
 nnoremap <leader>´s :NERDTreeFind<cr>
 
-nnoremap <leader>b :AsyncRun dotnet build /m /v:q<cr>
+" Build Solution
+nnoremap <leader>bs :AsyncRun dotnet build /m /v:q<cr>
 
+" Run tests
+noremap <leader>rt :call CsharpRunTests()<cr>
+
+nnoremap <leader>so :source %<cr>
+
+nnoremap <leader>qq :AsyncStop<cr>

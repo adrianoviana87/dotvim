@@ -21,43 +21,43 @@ let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
 let g:syntastic_cs_checkers = ['code_checker']
 let g:Omnisharp_start_server = 0
 augroup omnisharp_commands
-    autocmd!
-    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+  autocmd!
+  "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
+  autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
-    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
-    " Add syntax highlighting for types and interfaces
-    autocmd BufEnter *.cs OmniSharpHighlightTypes
+  " Add syntax highlighting for types and interfaces
+  autocmd BufEnter *.cs OmniSharpHighlightTypes
 
-    " Automatically add new cs files to the nearest project on save
-    " autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+  " Automatically add new cs files to the nearest project on save
+  " autocmd BufWritePost *.cs call OmniSharp#AddToProject()
 
-    if has("gui_running")
-      "show type information automatically when the cursor stops moving
-      autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-    endif
+  if has("gui_running")
+    "show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+  endif
 
-    "The following commands are contextual, based on the current cursor position.
+  "The following commands are contextual, based on the current cursor position.
 
-    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>fi :OmniSharpFindImplementations<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>ft :OmniSharpFindType<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>fs :OmniSharpFindSymbol<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>fu :OmniSharpFindUsages<cr>
-    "finds members in the current buffer
-    autocmd FileType cs nnoremap <buffer> <leader>fm :OmniSharpFindMembers<cr>
-    " cursor can be anywhere on the line containing an issue
-    autocmd FileType cs nnoremap <buffer> <leader>x  :OmniSharpFixIssue<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>tt :OmniSharpTypeLookup<cr>
-    autocmd FileType cs nnoremap <buffer> <leader>dc :OmniSharpDocumentation<cr>
-    "navigate up by method/property/field
-    autocmd FileType cs nnoremap <buffer> <C-K> :OmniSharpNavigateUp<cr>
-    "navigate down by method/property/field
-    autocmd FileType cs nnoremap <buffer> <C-J> :OmniSharpNavigateDown<cr>
-    autocmd FileType cs setlocal shiftwidth=4
-    autocmd FileType cs setlocal tabstop=4
+  autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>fi :OmniSharpFindImplementations<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>ft :OmniSharpFindType<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>fs :OmniSharpFindSymbol<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>fu :OmniSharpFindUsages<cr>
+  "finds members in the current buffer
+  autocmd FileType cs nnoremap <buffer> <leader>fm :OmniSharpFindMembers<cr>
+  " cursor can be anywhere on the line containing an issue
+  autocmd FileType cs nnoremap <buffer> <leader>x  :OmniSharpFixIssue<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>tt :OmniSharpTypeLookup<cr>
+  autocmd FileType cs nnoremap <buffer> <leader>dc :OmniSharpDocumentation<cr>
+  "navigate up by method/property/field
+  autocmd FileType cs nnoremap <buffer> <C-K> :OmniSharpNavigateUp<cr>
+  "navigate down by method/property/field
+  autocmd FileType cs nnoremap <buffer> <C-J> :OmniSharpNavigateDown<cr>
+  autocmd FileType cs setlocal shiftwidth=4
+  autocmd FileType cs setlocal tabstop=4
 
 augroup END
 
@@ -75,6 +75,7 @@ autocmd FileType cs nnoremap <leader>nm :OmniSharpRename<cr>
 autocmd FileType cs nnoremap <F2> :OmniSharpRename<cr>
 " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
 autocmd FileType cs command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+autocmd FileType cs nnoremap <leader>bp :call CsharpBuildProject()<cr>
 
 " Force OmniSharp to reload the solution. Useful when switching branches etc.
 nnoremap <leader>rl :OmniSharpReloadSolution<cr>
@@ -92,3 +93,71 @@ let g:OmniSharp_want_snippet=1
 "You might also want to look at the echodoc plugin
 set splitbelow
 
+function! FindFile(dir, filter)
+  let l:files = split(globpath(a:dir, a:filter), "\n")
+  if len(l:files) > 0
+    return get(l:files, 0)
+  endif
+
+  return ''
+endfunction
+
+function! DirGoUp(dir)
+  let l:dirList = split(a:dir, '\')[0:-2]
+  if len(l:dirList) == 0
+    return ''
+  endif
+
+  return join(l:dirList, '\')
+endfunction
+function! CsharpFindProject(dir)
+  let l:dir = len(a:dir) ? a:dir : expand('%:p:h')
+  let l:projectFile = FindFile(l:dir, '*.csproj')
+
+  while len(l:projectFile) == 0 && len(l:dir) > 0
+    let l:dir = DirGoUp(l:dir)
+    let l:projectFile = len(l:dir) > 0 ? FindFile(l:dir, '*.csproj') : ''
+  endwhile
+  return l:projectFile
+endfunction
+
+function! CsharpBuildProject()
+  let l:projectFile = CsharpFindProject('')
+  if len(l:projectFile) <= 0
+    echom 'Project file not found!'
+    return
+  endif
+
+  execute 'AsyncRun dotnet build /m /v:m ' . l:projectFile
+endfunction
+
+function! CsharpRunTests()
+  let l:testProject = ''
+  let l:answer = confirm("Test current project or entire solution?", "Current &Project\n&Entire Solution\n&Cancel", 1, "Question")
+  if l:answer == 3
+    return
+  endif
+  if l:answer == 1
+    let l:testProject = CsharpFindProject('')
+    if len(l:testProject) <= 0
+      echom 'Current project not found!'
+      return
+    endif
+  endif
+  let l:answer = confirm("Build before running tests?", "&Yes\n&No\n&Cancel", 1, "Question")
+  if l:answer == 3
+    return
+  endif
+  let l:cmd = "dotnet test -v n "
+  if l:answer == 2
+    let l:cmd = l:cmd . "--no-build --no-restore "
+  endif
+
+  let l:testFilter = inputdialog("Test filter: ")
+  if len(l:testFilter) > 0
+    let l:testFilter = "--filter " . l:testFilter . " "
+  endif
+
+  let l:cmd = l:cmd . l:testFilter . l:testProject
+  execute 'AsyncRun ' . l:cmd
+endfunction
