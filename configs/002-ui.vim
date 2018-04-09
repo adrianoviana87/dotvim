@@ -39,3 +39,5 @@ let g:airline_theme='codedark'
 let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:asyncrun_encs = 'cp850'
+

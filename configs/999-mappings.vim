@@ -145,3 +145,7 @@ noremap <leader>rt :call CsharpRunTests()<cr>
 nnoremap <leader>so :source %<cr>
 
 nnoremap <leader>qq :AsyncStop<cr>
+
+" Preview close
+nnoremap <leader>pc :pclose<cr>
+
