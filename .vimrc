@@ -8,7 +8,7 @@ if has('nvim') " NEOVIM - Use VimPlug
     let g:ruby_host_prog = 'ruby C:/Ruby24/lib/ruby/gems/2.4.0/gems/neovim-0.7.1/bin/neovim-ruby-host'
   endif
 
-  call plug#begin('$Home/.vim/plugged')
+  call plug#begin('~/.vim/plugged')
   " list of plugins
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'mhartington/oceanic-next' "Color Scheme
