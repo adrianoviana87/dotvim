@@ -25,7 +25,6 @@ if has('nvim') " NEOVIM - Use VimPlug
   " Installs vim-dispatch (required to launch OmniSharp server)
   Plug 'tpope/vim-dispatch'
   " Installs this source
-  Plug 'https://gitlab.com/mixedCase/deoplete-omnisharp.git'
   Plug 'yggdroot/indentline'
   Plug 'tpope/vim-projectionist'
   Plug 'scrooloose/syntastic'

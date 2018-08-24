@@ -1,13 +1,18 @@
-color codedark
+if has('nvim')
+  color OceanicNext
+  let g:airline_theme='oceanicnext'
+else
+  color codedark
+  let g:airline_theme='codedark'
+endif
 set guioptions-=TrLm
 set guitablabel=\[%N\]\ %t\ %M
 
-set guifont=DejaVuSansMonoForPowerline\ NF:h11
-let g:airline_theme='codedark'
+set guifont=DejaVuSansMonoForPowerline\ NF:h10
 
 if has("nvim")
   "Sets the font for nvim-qt
-  Guifont! DejaVuSansMonoForPowerline NF:h11
+  Guifont! DejaVuSansMonoForPowerline NF:10
   " Sets the font for some gtk clients
   if exists('g:GtkGuiLoaded')
     call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
@@ -26,6 +31,6 @@ if !has("nvim") && (has("win32") || has("win64"))
 endif
 
 if exists('g:GtkGuiLoaded')
-  call rpcnotify(1, 'Gui', 'Font', 'Consolas NF 10')
+  call rpcnotify(1, 'Gui', 'Font', 'DejaVuSansMonoForPowerline NF 10')
 endif
 

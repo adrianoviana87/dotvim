@@ -8,6 +8,7 @@ let g:OmniSharp_typeLookupInPreview = 0
 "let g:OmniSharp_server_path = "C:\Users\adria\.vscode\extensions\ms-vscode.csharp-1.13.1\.omnisharp\OmniSharp.exe"
 
 let g:OmniSharp_server_type = 'roslyn'
+let g:OmniSharp_port = 2000
 "Timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 99999
 
@@ -15,7 +16,11 @@ let g:OmniSharp_timeout = 99999
 "when the first match contains parentheses.
 set noshowmatch
 let g:omnicomplete_fetch_full_documentation=1
-let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+if has('nvim')
+  let g:OmniSharp_selector_ui = 'unite'  " Use ctrlp.vim
+else
+  let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+endif
 " Get Code Issues and syntax errors
 " If you are using the omnisharp-roslyn backend, use the following
 let g:syntastic_cs_checkers = ['code_checker']
@@ -27,8 +32,8 @@ augroup omnisharp_commands
 
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
-  " Add syntax highlighting for types and interfaces
-  autocmd BufEnter *.cs OmniSharpHighlightTypes
+  " Add syntax highlighting for types and interfaces (too slow when in neovim)
+  " autocmd BufEnter *.cs OmniSharpHighlightTypes
 
   " Automatically add new cs files to the nearest project on save
   " autocmd BufWritePost *.cs call OmniSharp#AddToProject()
