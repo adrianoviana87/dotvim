@@ -87,6 +87,10 @@ set noswapfile
 " Use spaces instead of tabs
 set expandtab
 
+" This increases performance
+set noshowcmd
+set noruler
+
 " Be smart when using tabs ;)
 set smarttab
 
