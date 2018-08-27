@@ -23,14 +23,14 @@ else
 endif
 " Get Code Issues and syntax errors
 " If you are using the omnisharp-roslyn backend, use the following
-let g:syntastic_cs_checkers = ['code_checker']
+" let g:syntastic_cs_checkers = ['code_checker']
 let g:Omnisharp_start_server = 0
 augroup omnisharp_commands
   autocmd!
   "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
   autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
-  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+  " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
   " Add syntax highlighting for types and interfaces (too slow when in neovim)
   " autocmd BufEnter *.cs OmniSharpHighlightTypes

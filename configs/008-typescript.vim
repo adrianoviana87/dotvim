@@ -1,9 +1,3 @@
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "passive_filetypes": ["html"] }
 let g:tsuquyomi_disable_quickfix = 0
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_definition_split=3 "open definition in tab
@@ -19,7 +13,7 @@ if has("gui_running")
   endif
 augroup typescript_commands
     autocmd!
-    autocmd BufEnter,TextChanged,InsertLeave *.ts SyntasticCheck
+    " autocmd BufEnter,TextChanged,InsertLeave *.tsSyntasticCheck
 
     if has("gui_running")
       "show type information automatically when the cursor stops moving

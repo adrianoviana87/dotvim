@@ -27,7 +27,6 @@ if has('nvim') " NEOVIM - Use VimPlug
   " Installs this source
   Plug 'yggdroot/indentline'
   Plug 'tpope/vim-projectionist'
-  Plug 'scrooloose/syntastic'
   Plug 'sirver/ultisnips'
   Plug 'quramy/tsuquyomi'
   Plug 'shougo/vimproc.vim'
@@ -37,6 +36,7 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'oranget/vim-csharp'
   Plug 'neoclide/denite-git'
   Plug 'rafi/awesome-vim-colorschemes'
+  Plug 'w0rp/ale'
   Plug 'mattn/emmet-vim'
   Plug 'skywind3000/asyncrun.vim'
   call plug#end()
@@ -107,6 +107,7 @@ execute "source " . configBasePath . "009-csharp.vim"
 execute "source " . configBasePath . "010-dev-icons.vim"
 execute "source " . configBasePath . "011-database.vim"
 execute "source " . configBasePath . "012-projectionist.vim"
+execute "source " . configBasePath . "996-linter.vim"
 " Only executes this file when in VIM. NeoVim will execute it when the gui initilizes
 if !has("nvim")
   execute "source " . configBasePath . "997-gui.vim"
