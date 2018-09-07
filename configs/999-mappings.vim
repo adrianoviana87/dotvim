@@ -42,7 +42,7 @@ nnoremap <c-c> :
 " No Highlight
 nnoremap <leader>nh :noh<cr>
 
-inoremap <s-cr> <esc>
+inoremap <c-j> <esc>
 inoremap jk <esc>
 
 
@@ -135,9 +135,14 @@ nnoremap <leader>O O<esc>
 nnoremap 0 ^
 
 nnoremap <leader>´s :NERDTreeFind<cr>
+nnoremap <leader>'s :NERDTreeFind<cr>
+
+" Emmet: 'c-y c-,' in insert mode
 
 " Build Solution
 nnoremap <leader>bs :AsyncRun dotnet build /m /v:q<cr>
+
+nnoremap <leader>a :A<cr>
 
 " Run tests
 noremap <leader>rt :call CsharpRunTests()<cr>
@@ -149,3 +154,4 @@ nnoremap <leader>qq :AsyncStop<cr>
 " Preview close
 nnoremap <leader>pc :pclose<cr>
 
+nnoremap <leader>tb :TagbarToggle<cr>

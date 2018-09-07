@@ -98,38 +98,37 @@ let g:OmniSharp_want_snippet=1
 "You might also want to look at the echodoc plugin
 set splitbelow
 
-function! FindFile(dir, filter)
-  let l:files = split(globpath(a:dir, a:filter), "\n")
+function! FindFile(dir, filter, numberDirUp)
+  let l:gpath = globpath(a:dir, a:filter)
+  let l:files = split(l:gpath, "\n")
   if len(l:files) > 0
     return get(l:files, 0)
+  endif
+  if a:numberDirUp > 0
+    let l:dir = DirGoUp(a:dir)
+    return FindFile(l:dir, a:filter, a:numberDirUp - 1)
   endif
 
   return ''
 endfunction
 
 function! DirGoUp(dir)
-  let l:dirList = split(a:dir, '\')[0:-2]
+  let l:dirList = split(a:dir, '/')[0:-2]
   if len(l:dirList) == 0
     return ''
   endif
 
-  return join(l:dirList, '\')
+  return '/' . join(l:dirList, '/')
 endfunction
 function! CsharpFindProject(dir)
   let l:dir = len(a:dir) ? a:dir : expand('%:p:h')
-  let l:projectFile = FindFile(l:dir, '*.csproj')
-
-  while len(l:projectFile) == 0 && len(l:dir) > 0
-    let l:dir = DirGoUp(l:dir)
-    let l:projectFile = len(l:dir) > 0 ? FindFile(l:dir, '*.csproj') : ''
-  endwhile
+  let l:projectFile = FindFile(l:dir, '*.csproj', 5)
   return l:projectFile
 endfunction
 
 function! CsharpBuildProject()
   let l:projectFile = CsharpFindProject('')
   if len(l:projectFile) <= 0
-    echom 'Project file not found!'
     return
   endif
 

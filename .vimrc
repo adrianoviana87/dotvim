@@ -39,6 +39,7 @@ if has('nvim') " NEOVIM - Use VimPlug
   Plug 'w0rp/ale'
   Plug 'mattn/emmet-vim'
   Plug 'skywind3000/asyncrun.vim'
+  Plug 'majutsushi/tagbar'
   call plug#end()
   if (has("termguicolors"))
     set termguicolors
